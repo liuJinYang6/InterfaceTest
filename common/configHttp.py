@@ -14,7 +14,7 @@ class ConfigHttp(object):
         """
         封装requsets.get()方法
         """
-        response = requests.get(url=url, params=params)
+        response = requests.get(url=url, params=eval(params))
 
         real = response.content
 
@@ -28,7 +28,7 @@ class ConfigHttp(object):
         """
         封装requsets.post()方法
         """
-        response = requests.post(url=url, data=params)
+        response = requests.post(url=url, data=eval(params))
 
         status_code = response.status_code
 
@@ -40,6 +40,16 @@ class ConfigHttp(object):
 
         if method == 'get' or method == 'GET':
             status_code, real = self.get(url, params)
+            return status_code, real
 
         if method == 'post' or method == 'POST':
             status_code, real = self.post(url, params)
+            return status_code, real
+
+
+if __name__ == '__main__':
+
+    r = ConfigHttp()
+
+    a,b = r.run('https://www.wanandroid.com/user/login','POST',"{'username':'liangchao','password':'123456'}")
+    print(a,b)
