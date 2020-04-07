@@ -49,7 +49,4 @@ class ConfigHttp(object):
 
 if __name__ == '__main__':
 
-    r = ConfigHttp()
-
-    a,b = r.run('https://www.wanandroid.com/user/login','POST',"{'username':'liangchao','password':'123456'}")
-    print(a,b)
+    pass
