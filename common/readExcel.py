@@ -34,4 +34,9 @@ class ReadExcel(object):
 
 
 if __name__ == '__main__':
-    pass
+
+    re = ReadExcel()
+
+    a = re.read()
+
+    print(a)
