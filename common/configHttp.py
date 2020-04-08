@@ -14,27 +14,42 @@ class ConfigHttp(object):
         """
         封装requsets.get()方法
         """
-        response = requests.get(url=url, params=eval(params))
+        try:
 
-        real = response.content
+            response = requests.get(url=url, params=eval(params))
 
-        status_code = response.status_code
+            real = response.content
 
-        real = response.text
+            status_code = response.status_code
 
-        return status_code, real
+            real = response.json()['errorCode']
+
+            return status_code, real
+
+        except Exception:
+
+            print("request error,please check out!")
+
+            return None, None
 
     def post(self, url, params):
         """
         封装requsets.post()方法
         """
-        response = requests.post(url=url, data=eval(params))
+        try:
+            response = requests.post(url=url, data=eval(params))
 
-        status_code = response.status_code
+            status_code = response.status_code
 
-        real = response.text
+            real = response.json()['errorCode']
 
-        return status_code, real
+            return status_code, real
+
+        except Exception:
+
+            print("request error,please check out!")
+
+            return None, None
 
     def run(self, url, method, params):
 
@@ -48,5 +63,4 @@ class ConfigHttp(object):
 
 
 if __name__ == '__main__':
-
     pass
