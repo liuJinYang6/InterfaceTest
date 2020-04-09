@@ -3,7 +3,7 @@
 # @Time : 2020-04-08 22:45
 # @Author : Go ku
 # @File : requestAssert.py
-from unittest import TestCase
+
 
 
 class RequestAssert(object):
@@ -13,7 +13,7 @@ class RequestAssert(object):
         """
         :param real_result: 实际结果
         :param expect_result: 预期结果
-        :return:
+        :return: Sussce 或 False 断言结果
         """
         if str(real_result) == str(expect_result):
 
