@@ -9,6 +9,7 @@ from ddt import ddt, unpack, data  # ddt导包就是用这种方法，避免使�
 from common.readExcel import ReadExcel
 from common.configHttp import ConfigHttp
 from common.requestAssert import RequestAssert
+from common.writeExcel import WriteExcel
 
 # 读取Excel实例化
 re = ReadExcel()
@@ -18,6 +19,8 @@ testdata = re.read()
 req = ConfigHttp()
 # 断言实例化
 result = RequestAssert()
+# 写入Excel实例化
+wr = WriteExcel()
 
 
 @ddt
@@ -50,7 +53,6 @@ class MyTest(unittest.TestCase):
     @data(*testdata)
     @unpack
     def testInterface(self, id, interfaceUrl, name, method, value, expect, real, status):
-
         # 请求接口，得到返回值
         real_status_code, real_result = req.run(interfaceUrl, method, value)
 
@@ -61,6 +63,7 @@ class MyTest(unittest.TestCase):
         print(assert_result)
 
         # 将断言结果写入excel
+        wr.write(id, assert_result, real_status_code)
 
 
 if __name__ == '__main__':
