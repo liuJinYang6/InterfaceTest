@@ -5,7 +5,6 @@
 # @File : requestAssert.py
 
 
-
 class RequestAssert(object):
     """断言接口请求结果"""
 
@@ -17,10 +16,8 @@ class RequestAssert(object):
         """
         if str(real_result) == str(expect_result):
 
-            return "Sussce"
+            return "Success"
 
         else:
 
             return "False"
-
-
