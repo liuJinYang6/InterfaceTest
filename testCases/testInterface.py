@@ -60,10 +60,16 @@ class MyTest(unittest.TestCase):
         # 断言接口返回值，得到断言结果
 
         assert_result = result.check(real_result, expect)
+        # unittest.TestCase.assertTrue()
         print(assert_result)
-
         # 将断言结果写入excel
         wr.write(id, assert_result, real_status_code)
+
+        try:
+            self.assertEqual("Success", assert_result)
+        except AssertionError as e:
+            print("用例失败！")
+            raise e
 
 
 if __name__ == '__main__':
