@@ -1,6 +1,6 @@
 ## 接口自动化测试框架
 
-该项目是基于**unittest**+**requests**+**ddt**+**python**实现的接口自动化测试框架。
+- 该项目是基于**unittest**+**requests**+**ddt**+**python**实现的接口自动化测试框架。
 
 ## 版本：V1.0
 
